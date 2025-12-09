@@ -1,3 +1,4 @@
+import 'package:dasz_spisac/views/policy_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewmodel extends ChangeNotifier{
@@ -18,12 +19,14 @@ class LoginViewmodel extends ChangeNotifier{
       return;
     }
 
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const PolicyPage())
+    );
     //TODO: change page to OTPs check and hive to save album number
-
-    @override
-    void dispose(){
-      loginController.dispose();
-      super.dispose();
-    }
+  }
+  @override
+  void dispose(){
+    loginController.dispose();
+    super.dispose();
   }
 }

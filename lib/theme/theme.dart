@@ -15,11 +15,27 @@ class AppTheme {
             fontWeight: FontWeight.normal,
             color: AppColors.primaryBlue,
           ),
+        displaySmall: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.normal,
+          color: AppColors.primaryBlue,
+        ),
         bodyLarge: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.normal,
           color: AppColors.textInputActive
+        ),
+        bodySmall: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          color: AppColors.secondaryBlue
         )
+      ),
+
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: AppColors.textInputDesibled,
+        selectionHandleColor: AppColors.textInputDesibled,
+        selectionColor: AppColors.textInputDesibled
       ),
 
       inputDecorationTheme: InputDecorationTheme(
@@ -52,11 +68,13 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.bgButtonActive,
           foregroundColor: AppColors.bgButtonTextActive,
+            minimumSize: const Size(double.infinity, 75),
           textStyle: const TextStyle(
-            fontSize: 20,
+            fontSize: 32,
             fontWeight: FontWeight.bold,
             fontFamily: 'Poppins'
-          )
+          ),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(10.0))
         ),
       )
     );
