@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
+import 'package:dasz_spisac/theme/colors.dart';
 
 class GradientScaffold extends StatelessWidget{
   final Widget body;

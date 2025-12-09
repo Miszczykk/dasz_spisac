@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'loginPage.dart';
-import './theme/theme.dart';
+// import 'package:dasz_spisac/loginPage.dart';
+import 'package:dasz_spisac/views/login_page.dart';
+import 'package:dasz_spisac/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());

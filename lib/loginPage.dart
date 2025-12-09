@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './theme/gradientScaffold.dart';
+import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
+
 class LoginPage extends StatelessWidget{
   const LoginPage({super.key});
 
@@ -19,19 +20,23 @@ class LoginPage extends StatelessWidget{
               ),
             ),
 
-            Expanded(
-              child: Center(
-                  child: TextField(
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Podaj login'
-                        )
-                    ),
-              )
-            ),
-            Expanded(
-              child: TextButton(onPressed: (){}, child: Text('Dalej')),
-            )
+            Expanded(child: Column(
+              children: [
+                const Spacer(),
+                SizedBox(height: 100),
+                TextField(
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Podaj login'
+                    )
+                ),
+                const SizedBox(height: 100.0),
+                const Spacer(),
+                ElevatedButton(onPressed: (){}, child: Text('Dalej')),
+                SizedBox(height: 100)
+              ],
+            ))
+
           ],
         ),
       ),

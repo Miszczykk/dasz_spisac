@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
+import 'package:dasz_spisac/theme/colors.dart';
 
 class AppTheme {
   AppTheme._();
 
   static ThemeData get lightTheme {
-    const defaultLargeText = TextStyle(
-      fontSize: 72,
-      fontWeight: FontWeight.normal,
-      color: AppColors.primaryBlue,
-    );
-
     return ThemeData(
       useMaterial3: true,
       fontFamily: 'Poppins',
@@ -53,6 +47,18 @@ class AppTheme {
             )
         ),
       ),
+
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.bgButtonActive,
+          foregroundColor: AppColors.bgButtonTextActive,
+          textStyle: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins'
+          )
+        ),
+      )
     );
   }
 }
