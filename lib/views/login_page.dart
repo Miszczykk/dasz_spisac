@@ -31,7 +31,8 @@ class _LoginPageContent extends StatelessWidget{
                   TextSpan(style: Theme.of(context).textTheme.displayLarge,
                       children: [const
                       TextSpan(text: "dasz\n"),
-                        TextSpan(text: "notatki?", style: Theme.of(context).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold))])
+                        TextSpan(text: "notatki?", style: Theme.of(context).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold))
+                      ])
               ),
             ),
 
@@ -46,7 +47,7 @@ class _LoginPageContent extends StatelessWidget{
                         labelText: 'Podaj login'
                     )
                 ),
-                const SizedBox(height: 100.0),
+                const SizedBox(height: 100),
                 const Spacer(),
 
                 Consumer<LoginViewmodel>(
@@ -57,7 +58,6 @@ class _LoginPageContent extends StatelessWidget{
                 SizedBox(height: 100)
               ],
             ))
-
           ],
         ),
       ),
