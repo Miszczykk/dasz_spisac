@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:dasz_spisac/views/policy_page.dart'; //TODO: Change
+import 'package:dasz_spisac/views/verification_page.dart';
 
 class PolicyViewmodel extends ChangeNotifier{
   void onNextPressed(BuildContext context) async{
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const PolicyPage()),
+      MaterialPageRoute(builder: (context) => const VerificationPage()),
     );
   }
 }

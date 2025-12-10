@@ -39,9 +39,11 @@ class _LoginPageContent extends StatelessWidget{
             Expanded(child: Column(
               children: [
                 const Spacer(),
+                const Spacer(),
                 SizedBox(height: 100),
                 TextField(
                   controller: viewModel.loginController,
+                    style: Theme.of(context).textTheme.labelMedium,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Podaj login'

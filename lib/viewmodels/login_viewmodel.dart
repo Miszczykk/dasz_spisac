@@ -1,5 +1,5 @@
-import 'package:dasz_spisac/views/policy_page.dart';
 import 'package:flutter/material.dart';
+import 'package:dasz_spisac/views/policy_page.dart';
 
 class LoginViewmodel extends ChangeNotifier{
   final TextEditingController loginController = TextEditingController();
