@@ -103,8 +103,8 @@ class _PolicyPageContent extends StatelessWidget{
                     Text.rich(
                       TextSpan(
                           children: [
-                          TextSpan(text: '\nREGULAMIN ŚWIADCZENIA USŁUG W RAMACH APLIKACJI MOBILNEJ "DASZ NOTATKI"\n\n', style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.bold)),
-                          TextSpan(text: policyText, style: Theme.of(context).textTheme.bodySmall)
+                          TextSpan(text: '\nREGULAMIN ŚWIADCZENIA USŁUG W RAMACH APLIKACJI MOBILNEJ "DASZ NOTATKI"\n\n', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
+                          TextSpan(text: policyText, style: Theme.of(context).textTheme.labelSmall)
                           ])
                     ),
                     Consumer<PolicyViewmodel>(

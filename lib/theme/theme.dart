@@ -12,24 +12,54 @@ class AppTheme {
       textTheme: TextTheme(
           displayLarge: TextStyle(
             fontSize: 82,
+            fontWeight: FontWeight.w500,
+            color: AppColors.primaryBlue,
+          ),
+          displayMedium: TextStyle(
+            fontSize: 42,
+            fontWeight: FontWeight.normal,
+            color: AppColors.secondaryBlue,
+          ),
+          headlineSmall: TextStyle(
+            fontSize: 18,
             fontWeight: FontWeight.normal,
             color: AppColors.primaryBlue,
           ),
+
+
         displaySmall: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.normal,
           color: AppColors.primaryBlue,
         ),
+
         bodyLarge: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.normal,
           color: AppColors.textInputActive
         ),
+
         bodySmall: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.normal,
           color: AppColors.secondaryBlue
-        )
+        ),
+
+          labelLarge: TextStyle(
+            fontSize: 38,
+            fontWeight: FontWeight.bold,
+            color: AppColors.textInputActive
+          ),
+          labelMedium: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textInputActive
+          ),
+          labelSmall: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              color: AppColors.secondaryBlue
+          )
       ),
 
       textSelectionTheme: TextSelectionThemeData(
@@ -42,11 +72,12 @@ class AppTheme {
         filled: true,
         fillColor: AppColors.bgInput,
         labelStyle: const TextStyle(
-          color: AppColors.textInputActive,
+          color: AppColors.textInputDesibled,
           fontSize: 18,
+          fontWeight: FontWeight.normal
         ),
         hintStyle: const TextStyle(
-          color: AppColors.textInputDesibled
+          color: AppColors.textInputDesibled,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
