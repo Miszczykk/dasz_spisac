@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dasz_spisac/views/policy_page.dart';
+import 'package:dasz_spisac/views/verification_page.dart';
+import 'package:dasz_spisac/models/user.dart';
 
 class LoginViewmodel extends ChangeNotifier{
   final TextEditingController loginController = TextEditingController();
@@ -19,10 +20,11 @@ class LoginViewmodel extends ChangeNotifier{
       return;
     }
 
+    User.userData = User(id: login.substring(0, 5), domain: login.substring(5, login.length));
+
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const PolicyPage())
+      MaterialPageRoute(builder: (context) => const VerificationPage())
     );
-    //TODO: change page to OTPs check and hive to save album number
   }
   @override
   void dispose(){

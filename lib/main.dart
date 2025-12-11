@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dasz_spisac/views/login_page.dart';
+// import 'package:dasz_spisac/views/login_page.dart';
+import 'package:dasz_spisac/views/policy_page.dart';
 import 'package:dasz_spisac/theme/theme.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const LoginPage(),
+      home: const PolicyPage(),
     );
   }
 }
