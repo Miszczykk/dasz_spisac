@@ -15,9 +15,9 @@ class VerificationViewmodel extends ChangeNotifier{
   }
 
   void onNextPressed(BuildContext context) async {
-    if (checkOTPCode(otpCode)) {
+    if (!checkOTPCode(otpCode)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+         const SnackBar(
             content: Text('Podany kod jest niepoprawny, spróbuj ponownie')),
       );
       return;
