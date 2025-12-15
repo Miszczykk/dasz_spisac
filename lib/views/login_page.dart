@@ -31,7 +31,7 @@ class _LoginPageContent extends StatelessWidget{
                   TextSpan(style: Theme.of(context).textTheme.displayLarge,
                       children: [const
                       TextSpan(text: "dasz\n"),
-                        TextSpan(text: "notatki?", style: Theme.of(context).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold))
+                        TextSpan(text: "spisać?", style: Theme.of(context).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold))
                       ])
               ),
             ),

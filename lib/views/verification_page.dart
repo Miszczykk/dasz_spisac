@@ -41,34 +41,18 @@ class _LoginPageContent extends StatelessWidget{
                 children: [
                   const Spacer(),
                   const Spacer(),
-                Text('Podaj kod', style: Theme.of(context).textTheme.displayMedium),
-                  SizedBox(height: 50),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(4, (index) {
-                    return SizedBox(
-                        width: 75,
-                        height: 75,
-                        child: TextField(
-                          controller: viewModel.otpControllers[index],
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-                          maxLength: 1,
-                          style: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),
-                          decoration: InputDecoration(
-                            counterText: "",
-                          ),
-                          onChanged: (value) {
-                            if (value.length == 1 && index < 3) {
-                              FocusScope.of(context).nextFocus();
-                            } else if (value.isEmpty && index > 0) {
-                              FocusScope.of(context).previousFocus();
-                            }
-                          },
-                        ),
-                    );
-                  },)
-                ),
+
+                  TextField(
+                      controller: viewModel.otpControllers,
+                      maxLength: 8,
+                      keyboardType: TextInputType.number,
+                      style: Theme.of(context).textTheme.labelMedium,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Podaj kod',
+                        counterText: "",
+                      )
+                  ),
                   SizedBox(height: 100),
                 Consumer<VerificationViewmodel>(
                   builder: (context, vm, child){

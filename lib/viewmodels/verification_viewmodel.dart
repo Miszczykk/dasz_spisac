@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:dasz_spisac/views/policy_page.dart';
+import 'package:dasz_spisac/services/OTP_model.dart';
+
 
 class VerificationViewmodel extends ChangeNotifier{
-  final List<TextEditingController> otpControllers = List.generate(4, (index) => TextEditingController());
 
-  String get otpCode => otpControllers.map((e) => e.text).join();
+  final TextEditingController otpControllers = TextEditingController();
 
-  bool checkOTPCode(String code){
-    if(code.length == 4){
-      //TODO: Upload to service and check
-      return true;
+  Future<bool> checkOTPCode(String code) async{
+    if(code.length == 8){
+      try{
+        await OtpModel().verifyCode(code);
+        return true;
+      }catch(e){
+        print(e);
+        return false;
+      }
     }
     return false;
   }
 
   void onNextPressed(BuildContext context) async {
-    if (!checkOTPCode(otpCode)) {
+    final bool isSuccess = await checkOTPCode(otpControllers.text);
+    if (!isSuccess) {
       ScaffoldMessenger.of(context).showSnackBar(
          const SnackBar(
             content: Text('Podany kod jest niepoprawny, spróbuj ponownie')),
@@ -29,9 +36,7 @@ class VerificationViewmodel extends ChangeNotifier{
   }
   @override
   void dispose(){
-    for(var controller in otpControllers){
-      controller.dispose();
-    }
+    otpControllers.dispose();
     super.dispose();
   }
 }

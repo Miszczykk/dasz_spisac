@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dasz_spisac/views/verification_page.dart';
 import 'package:dasz_spisac/models/user.dart';
+import 'package:dasz_spisac/services/OTP_model.dart';
+import 'package:dasz_spisac/models/local_model.dart';
 
 class LoginViewmodel extends ChangeNotifier{
   final TextEditingController loginController = TextEditingController();
@@ -21,6 +23,9 @@ class LoginViewmodel extends ChangeNotifier{
     }
 
     User.userData = User(id: login.substring(0, 5), domain: login.substring(5, login.length));
+    Data.writeData(User.userData!.id, User.userData!.domain);
+
+    OtpModel().sendCode();
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) => const VerificationPage())
