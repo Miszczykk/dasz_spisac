@@ -12,13 +12,12 @@ void main() async{
   await dotenv.load(fileName: '.env');
 
   await Hive.initFlutter();
-  var localDB = await Hive.openBox('localDB');
+  await Hive.openBox('localDB');
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL'] ?? '',
     anonKey: dotenv.env['SUPABASE_PUBLIC_API'] ?? '',
   );
-
   runApp(const MyApp());
 }
 
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
 
-      home: Data.readData() ? PolicyPage() : PolicyPage() //TODO: Change one PolicyPage to main page PolicyPage() : MainPage()
+      home: LocalModel.hasUser() ? const PolicyPage() : const PolicyPage() //TODO: Change one PolicyPage to main page PolicyPage() : MainPage()
     );
   }
 }

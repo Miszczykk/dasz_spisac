@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dasz_spisac/views/verification_page.dart';
-import 'package:dasz_spisac/models/user.dart';
 import 'package:dasz_spisac/services/OTP_model.dart';
 
 
@@ -22,14 +21,20 @@ class LoginViewmodel extends ChangeNotifier{
       return;
     }
 
-    User.userData = User(id: login.substring(0, 5), domain: login.substring(5, login.length));
-    // Data.writeData(User.userData!.id, User.userData!.domain);
-
-    OtpModel().sendCode(User.userData!.id, User.userData!.domain);
-
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const VerificationPage())
-    );
+    final id = login.substring(0, 5);
+    final domain = login.substring(5);
+    try{
+      await OtpModel().sendCode(id, domain);
+      if(context.mounted){
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => VerificationPage(tempId: id, tempDomain: domain))
+        );
+      }
+    }catch(e){
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Błąd wysyłania kodu. Sprawdź internet.')),
+      );
+    }
   }
   @override
   void dispose(){

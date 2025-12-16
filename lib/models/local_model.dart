@@ -1,14 +1,28 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-class Data{
+class LocalModel{
+  static const String _keyId = 'userId';
+  static const String _keyDomain = 'userDomain';
   static final _localDB = Hive.box('localDB');
 
-  static void writeData(String id, String domain){
-    _localDB.put(1, id);
-    _localDB.put(2, domain);
+  static void saveUser(String id, String domain){
+    _localDB.put(_keyId, id);
+    _localDB.put(_keyDomain, domain);
   }
 
-  static bool readData(){
-    return _localDB.get(1) != null;
+  static Map<String, String>? readUser(){
+    final id = _localDB.get(_keyId);
+    final domain = _localDB.get(_keyDomain);
+
+    return (id != null && domain != null) ? {'id': id, 'domain': domain} : null;
+  }
+
+  static void clearUser(){ //This function isn't used
+    _localDB.delete(_keyId);
+    _localDB.delete(_keyDomain);
+  }
+
+  static bool hasUser(){
+    return _localDB.containsKey(_keyId);
   }
 }

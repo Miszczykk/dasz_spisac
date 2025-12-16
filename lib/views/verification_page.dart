@@ -4,18 +4,33 @@ import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
 import 'package:dasz_spisac/viewmodels/verification_viewmodel.dart';
 
 class VerificationPage extends StatelessWidget{
-  const VerificationPage({super.key});
+
+  final String tempId;
+  final String tempDomain;
+
+  const VerificationPage({
+    super.key,
+    required this.tempId,
+    required this.tempDomain
+  });
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => VerificationViewmodel(),
-      child: const _LoginPageContent(),
+      child: _VerificationPageContent(tempId: tempId, tempDomain: tempDomain),
     );
   }
 }
 
-class _LoginPageContent extends StatelessWidget{
-  const _LoginPageContent();
+class _VerificationPageContent extends StatelessWidget{
+
+  final String tempId;
+  final String tempDomain;
+
+  const _VerificationPageContent({
+    required this.tempId,
+    required this.tempDomain
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +71,7 @@ class _LoginPageContent extends StatelessWidget{
                   SizedBox(height: 100),
                 Consumer<VerificationViewmodel>(
                   builder: (context, vm, child){
-                    return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Dalej'));
+                    return ElevatedButton(onPressed: () => vm.onNextPressed(context, tempId, tempDomain), child: Text('Dalej'));
                   },
                 ),
                   const Spacer(),
