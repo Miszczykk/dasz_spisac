@@ -100,14 +100,16 @@ class _PolicyPageContent extends StatelessWidget{
                           TextSpan(text: policyText, style: Theme.of(context).textTheme.labelSmall)
                           ])
                     ),
+                    SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
                     Consumer<PolicyViewmodel>(
                       builder: (context, vm, child){
                         return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Akceptuję'));
                       }
-                    )
+                    ),
+                    SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
                   ],
-                )
-                )
+                ),
+                ),
               ],
             )
         )

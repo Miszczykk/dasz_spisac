@@ -42,13 +42,9 @@ class _VerificationPageContent extends StatelessWidget{
         child: Column(
           children: [
             AppHeader(),
-
             Expanded(child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  const Spacer(),
-
                   TextField(
                       controller: viewModel.otpControllers,
                       maxLength: 8,
@@ -60,13 +56,13 @@ class _VerificationPageContent extends StatelessWidget{
                         counterText: "",
                       )
                   ),
-                  SizedBox(height: 100),
+                  const Spacer(),
                 Consumer<VerificationViewmodel>(
                   builder: (context, vm, child){
                     return ElevatedButton(onPressed: () => vm.onNextPressed(context, tempId, tempDomain), child: Text('Dalej'));
                   },
                 ),
-                  const Spacer(),
+                  SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
               ],
               ),
             ),

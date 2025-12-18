@@ -31,8 +31,6 @@ class _LoginPageContent extends StatelessWidget{
             Expanded(child: Column(
               children: [
                 const Spacer(),
-                const Spacer(),
-                SizedBox(height: 100),
                 TextField(
                   controller: viewModel.loginController,
                     style: Theme.of(context).textTheme.labelMedium,
@@ -41,7 +39,6 @@ class _LoginPageContent extends StatelessWidget{
                         labelText: 'Podaj login'
                     )
                 ),
-                const SizedBox(height: 100),
                 const Spacer(),
 
                 Consumer<LoginViewmodel>(
@@ -49,7 +46,7 @@ class _LoginPageContent extends StatelessWidget{
                     return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Dalej'));
                   },
                 ),
-                SizedBox(height: 100)
+                SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
               ],
             ))
           ],
