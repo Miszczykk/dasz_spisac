@@ -1,4 +1,4 @@
-import 'package:supabase_flutter/supabase_flutter.dart' hide User;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class OtpModel {
   final supabase = Supabase.instance.client;

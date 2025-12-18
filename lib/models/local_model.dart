@@ -23,6 +23,6 @@ class LocalModel{
   }
 
   static bool hasUser(){
-    return _localDB.containsKey(_keyId);
+    return _localDB.containsKey(_keyId) && _localDB.containsKey(_keyDomain);
   }
 }

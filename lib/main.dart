@@ -27,10 +27,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-
-      home: LocalModel.hasUser() ? const PolicyPage() : const PolicyPage() //TODO: Change one PolicyPage to main page PolicyPage() : MainPage()
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.light(),
+        builder: (context, child){
+          return Theme(data: AppTheme.lightTheme(context), child: child!);
+        },
+        home: LocalModel.hasUser() ? const PolicyPage() : const PolicyPage() //TODO: Change one PolicyPage to main page PolicyPage() : MainPage()
     );
   }
 }
