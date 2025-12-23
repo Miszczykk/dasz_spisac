@@ -1,6 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class OtpModel {
+class OtpService {
   final supabase = Supabase.instance.client;
 
     Future<void> sendCode(String id, String domain) async {
@@ -26,5 +26,4 @@ class OtpModel {
         rethrow;
       }
     }
-
 }

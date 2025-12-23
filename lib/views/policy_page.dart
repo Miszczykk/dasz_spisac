@@ -90,25 +90,25 @@ class _PolicyPageContent extends StatelessWidget{
               children: [
                 AppHeader(),
 
-                Expanded(child: 
-                ListView(
-                  children: [
-                    Text.rich(
-                      TextSpan(
-                          children: [
-                          TextSpan(text: '\nREGULAMIN ŚWIADCZENIA USŁUG W RAMACH APLIKACJI MOBILNEJ "DASZ NOTATKI"\n\n', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
-                          TextSpan(text: policyText, style: Theme.of(context).textTheme.labelSmall)
-                          ])
-                    ),
-                    SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
-                    Consumer<PolicyViewmodel>(
-                      builder: (context, vm, child){
-                        return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Akceptuję'));
-                      }
-                    ),
-                    SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
-                  ],
-                ),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      Text.rich(
+                          TextSpan(
+                              children: [
+                                TextSpan(text: '\nREGULAMIN ŚWIADCZENIA USŁUG W RAMACH APLIKACJI MOBILNEJ "DASZ NOTATKI"\n\n', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
+                                TextSpan(text: policyText, style: Theme.of(context).textTheme.labelSmall)
+                              ]
+                          )
+                      ),
+                      SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
+                      Consumer<PolicyViewmodel>(
+                          builder: (context, vm, child){
+                            return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Akceptuję'));
+                          }),
+                      SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
+                    ],
+                  ),
                 ),
               ],
             )

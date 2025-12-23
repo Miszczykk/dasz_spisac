@@ -24,7 +24,7 @@ class LoginViewmodel extends ChangeNotifier{
     final id = login.substring(0, 5);
     final domain = login.substring(5);
     try{
-      await OtpModel().sendCode(id, domain);
+      await OtpService().sendCode(id, domain);
       if(context.mounted){
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => VerificationPage(tempId: id, tempDomain: domain))
