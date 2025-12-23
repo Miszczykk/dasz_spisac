@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dasz_spisac/views/verification_page.dart';
-import 'package:dasz_spisac/services/OTP_model.dart';
+import 'package:dasz_spisac/services/OTP_service.dart';
 
 
 class LoginViewmodel extends ChangeNotifier{

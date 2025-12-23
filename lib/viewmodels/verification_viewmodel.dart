@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dasz_spisac/views/policy_page.dart';
-import 'package:dasz_spisac/services/OTP_model.dart';
+import 'package:dasz_spisac/services/OTP_service.dart';
 import 'package:dasz_spisac/models/local_model.dart';
 
 
