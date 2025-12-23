@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dasz_spisac/views/policy_page.dart';
+import 'package:dasz_spisac/views/welcome_page.dart';
 import 'package:dasz_spisac/theme/theme.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:dasz_spisac/models/local_model.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child){
           return Theme(data: AppTheme.lightTheme(context), child: child!);
         },
-        home: LocalModel.hasUser() ? const PolicyPage() : const PolicyPage() //TODO: Change one PolicyPage to main page PolicyPage() : MainPage()
+        home: LocalModel.hasUser() ? const PolicyPage() : const WelcomePage()
     );
   }
 }
