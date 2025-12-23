@@ -27,28 +27,28 @@ class _LoginPageContent extends StatelessWidget{
         child: Column(
           children: [
             AppHeader(),
-
-            Expanded(child: Column(
-              children: [
-                const Spacer(),
-                TextField(
-                  controller: viewModel.loginController,
-                    style: Theme.of(context).textTheme.labelMedium,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Podaj login'
-                    )
-                ),
-                const Spacer(),
-
-                Consumer<LoginViewmodel>(
-                  builder: (context, vm, child){
-                    return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Dalej'));
-                  },
-                ),
-                SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
-              ],
-            ))
+            Expanded(
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    TextField(
+                        controller: viewModel.loginController,
+                        style: Theme.of(context).textTheme.labelMedium,
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Podaj login'
+                        )
+                    ),
+                    const Spacer(),
+                    Consumer<LoginViewmodel>(
+                      builder: (context, vm, child){
+                        return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Dalej'));
+                        },
+                    ),
+                    SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
+                  ],
+                )
+            )
           ],
         ),
       ),

@@ -11,7 +11,7 @@ class VerificationViewmodel extends ChangeNotifier{
   Future<bool> checkOTPCode(String code, String id, String domain) async{
     if(code.length == 8){
       try{
-        await OtpModel().verifyCode(code, id, domain);
+        await OtpService().verifyCode(code, id, domain);
         LocalModel.saveUser(id, domain);
         return true;
       }catch(e){

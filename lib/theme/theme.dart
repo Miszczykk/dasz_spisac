@@ -9,7 +9,6 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       fontFamily: 'Poppins',
-
       textTheme: TextTheme(
           displayLarge: TextStyle(
             fontSize: AppFonts.h1(context),
@@ -21,6 +20,13 @@ class AppTheme {
             fontWeight: FontWeight.normal,
             color: AppColors.secondaryBlue,
           ),
+          displaySmall: TextStyle(
+            fontSize: AppFonts.h3(context),
+            fontWeight: FontWeight.normal,
+            color: AppColors.primaryBlue,
+          ),
+
+
           headlineSmall: TextStyle(
             fontSize: AppFonts.h3(context),
             fontWeight: FontWeight.normal,
@@ -28,23 +34,17 @@ class AppTheme {
           ),
 
 
-        displaySmall: TextStyle(
-          fontSize: AppFonts.h3(context),
-          fontWeight: FontWeight.normal,
-          color: AppColors.primaryBlue,
-        ),
+          bodyLarge: TextStyle(
+            fontSize: AppFonts.h3(context),
+            fontWeight: FontWeight.normal,
+            color: AppColors.textInputActive
+          ),
+          bodySmall: TextStyle(
+            fontSize: AppFonts.h4(context),
+            fontWeight: FontWeight.normal,
+            color: AppColors.secondaryBlue
+          ),
 
-        bodyLarge: TextStyle(
-          fontSize: AppFonts.h3(context),
-          fontWeight: FontWeight.normal,
-          color: AppColors.textInputActive
-        ),
-
-        bodySmall: TextStyle(
-          fontSize: AppFonts.h4(context),
-          fontWeight: FontWeight.normal,
-          color: AppColors.secondaryBlue
-        ),
 
           labelLarge: TextStyle(
             fontSize: AppFonts.h2(context),
@@ -70,6 +70,7 @@ class AppTheme {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
+        prefixIconColor: AppColors.textInputDesibled, //TODO: don't work
         filled: true,
         fillColor: AppColors.bgInput,
         labelStyle: TextStyle(
@@ -108,7 +109,10 @@ class AppTheme {
           ),
             shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(10.0))
         ),
-      )
+      ),
+      iconTheme: IconThemeData(
+        color: AppColors.primaryBlue
+      ),
     );
   }
 }
