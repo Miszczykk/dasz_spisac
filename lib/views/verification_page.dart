@@ -2,20 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
 import 'package:dasz_spisac/viewmodels/verification_viewmodel.dart';
+import 'package:dasz_spisac/theme/widgets/app_header.dart';
 
 class VerificationPage extends StatelessWidget{
-  const VerificationPage({super.key});
+
+  final String tempId;
+  final String tempDomain;
+
+  const VerificationPage({
+    super.key,
+    required this.tempId,
+    required this.tempDomain
+  });
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => VerificationViewmodel(),
-      child: const _LoginPageContent(),
+      child: _VerificationPageContent(tempId: tempId, tempDomain: tempDomain),
     );
   }
 }
 
-class _LoginPageContent extends StatelessWidget{
-  const _LoginPageContent();
+class _VerificationPageContent extends StatelessWidget{
+
+  final String tempId;
+  final String tempDomain;
+
+  const _VerificationPageContent({
+    required this.tempId,
+    required this.tempDomain
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,57 +41,28 @@ class _LoginPageContent extends StatelessWidget{
       body: SafeArea(
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text.rich(
-                  TextSpan(style: Theme.of(context).textTheme.displayLarge,
-                      children: [const
-                      TextSpan(text: "dasz\n"),
-                        TextSpan(text: "notatki?", style: Theme.of(context).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold))
-                      ])
-              ),
-            ),
-
+            AppHeader(),
             Expanded(child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
+                  TextField(
+                      controller: viewModel.otpControllers,
+                      maxLength: 8,
+                      keyboardType: TextInputType.number,
+                      style: Theme.of(context).textTheme.labelMedium,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Podaj kod',
+                        counterText: "",
+                      )
+                  ),
                   const Spacer(),
-                Text('Podaj kod', style: Theme.of(context).textTheme.displayMedium),
-                  SizedBox(height: 50),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(4, (index) {
-                    return SizedBox(
-                        width: 75,
-                        height: 75,
-                        child: TextField(
-                          controller: viewModel.otpControllers[index],
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-                          maxLength: 1,
-                          style: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),
-                          decoration: InputDecoration(
-                            counterText: "",
-                          ),
-                          onChanged: (value) {
-                            if (value.length == 1 && index < 3) {
-                              FocusScope.of(context).nextFocus();
-                            } else if (value.isEmpty && index > 0) {
-                              FocusScope.of(context).previousFocus();
-                            }
-                          },
-                        ),
-                    );
-                  },)
-                ),
-                  SizedBox(height: 100),
                 Consumer<VerificationViewmodel>(
                   builder: (context, vm, child){
-                    return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Dalej'));
+                    return ElevatedButton(onPressed: () => vm.onNextPressed(context, tempId, tempDomain), child: Text('Dalej'));
                   },
                 ),
-                  const Spacer(),
+                  SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
               ],
               ),
             ),

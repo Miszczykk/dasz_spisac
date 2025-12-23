@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
 import 'package:dasz_spisac/viewmodels/login_viewmodel.dart';
+import 'package:dasz_spisac/theme/widgets/app_header.dart';
 
 class LoginPage extends StatelessWidget{
   const LoginPage({super.key});
@@ -25,22 +26,11 @@ class _LoginPageContent extends StatelessWidget{
       body: SafeArea(
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text.rich(
-                  TextSpan(style: Theme.of(context).textTheme.displayLarge,
-                      children: [const
-                      TextSpan(text: "dasz\n"),
-                        TextSpan(text: "notatki?", style: Theme.of(context).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold))
-                      ])
-              ),
-            ),
+            AppHeader(),
 
             Expanded(child: Column(
               children: [
                 const Spacer(),
-                const Spacer(),
-                SizedBox(height: 100),
                 TextField(
                   controller: viewModel.loginController,
                     style: Theme.of(context).textTheme.labelMedium,
@@ -49,7 +39,6 @@ class _LoginPageContent extends StatelessWidget{
                         labelText: 'Podaj login'
                     )
                 ),
-                const SizedBox(height: 100),
                 const Spacer(),
 
                 Consumer<LoginViewmodel>(
@@ -57,7 +46,7 @@ class _LoginPageContent extends StatelessWidget{
                     return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Dalej'));
                   },
                 ),
-                SizedBox(height: 100)
+                SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
               ],
             ))
           ],

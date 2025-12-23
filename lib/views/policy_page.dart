@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
 import 'package:dasz_spisac/viewmodels/policy_viewmodel.dart';
+import 'package:dasz_spisac/theme/widgets/app_header.dart';
 
 class PolicyPage extends StatelessWidget{
   const PolicyPage({super.key});
@@ -31,7 +32,7 @@ class _PolicyPageContent extends StatelessWidget{
 2.2. W celu weryfikacji autentyczności konta, system automatycznie generuje i wysyła na podany adres e-mail jednorazowy kod weryfikacyjny.
 2.3. Użytkownik zobowiązany jest do przepisania otrzymanego kodu w odpowiednim polu Aplikacji. Jest to warunek konieczny do uzyskania dostępu do funkcjonalności systemu.
 3. Standardy Plików:
-3.1. W celu zapewnienia bezpieczeństwa i spójności danych, Aplikacja umożliwia przesyłanie wyłącznie plików o następujących rozszerzeniach: txt, docx, odt, xlsx, ods, pptx, odp.
+3.1. W celu zapewnienia bezpieczeństwa i spójności danych, Aplikacja umożliwia przesyłanie wyłącznie plików o następujących rozszerzeniach: txt, docx, odt, xlsx, ods, pptx, odp, png, jpg, jpeg.
 3.2. Próba przesłania plików o innych rozszerzeniach zostanie automatycznie zablokowana przez system.
 4. Transparentność Metadanych: Przy każdym udostępnionym pliku Aplikacja automatycznie publikuje informacje techniczne, w tym:
 4.1. Rozmiar pliku.
@@ -87,15 +88,7 @@ class _PolicyPageContent extends StatelessWidget{
         body: SafeArea(
             child: Column(
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text.rich(
-                      TextSpan(style: Theme.of(context).textTheme.displayLarge,
-                          children: [const
-                          TextSpan(text: "dasz\n"),
-                            TextSpan(text: "notatki?", style: Theme.of(context).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold))])
-                  ),
-                ),
+                AppHeader(),
 
                 Expanded(child: 
                 ListView(
@@ -107,14 +100,16 @@ class _PolicyPageContent extends StatelessWidget{
                           TextSpan(text: policyText, style: Theme.of(context).textTheme.labelSmall)
                           ])
                     ),
+                    SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
                     Consumer<PolicyViewmodel>(
                       builder: (context, vm, child){
                         return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Akceptuję'));
                       }
-                    )
+                    ),
+                    SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
                   ],
-                )
-                )
+                ),
+                ),
               ],
             )
         )
