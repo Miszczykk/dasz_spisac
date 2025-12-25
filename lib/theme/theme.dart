@@ -37,6 +37,11 @@ class AppTheme {
           fontWeight: FontWeight.normal,
           color: AppColors.textInputActive,
         ),
+        bodyMedium: TextStyle(
+          fontSize: AppFonts.h5(context),
+          fontWeight: FontWeight.normal,
+          color: AppColors.bgButtonTextActive,
+        ),
         bodySmall: TextStyle(
           fontSize: AppFonts.h4(context),
           fontWeight: FontWeight.normal,
