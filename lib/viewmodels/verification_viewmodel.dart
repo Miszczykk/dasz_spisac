@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:dasz_spisac/views/policy_page.dart';
+import 'package:dasz_spisac/views/welcome_page.dart';
 import 'package:dasz_spisac/services/OTP_service.dart';
 import 'package:dasz_spisac/models/local_model.dart';
 
-
-class VerificationViewmodel extends ChangeNotifier{
-
+class VerificationViewmodel extends ChangeNotifier {
   final TextEditingController otpControllers = TextEditingController();
 
-  Future<bool> checkOTPCode(String code, String id, String domain) async{
-    if(code.length == 8){
-      try{
+  Future<bool> checkOTPCode(String code, String id, String domain) async {
+    if (code.length == 8) {
+      try {
         await OtpService().verifyCode(code, id, domain);
         LocalModel.saveUser(id, domain);
         return true;
-      }catch(e){
+      } catch (e) {
         print(e);
         return false;
       }
@@ -29,22 +27,22 @@ class VerificationViewmodel extends ChangeNotifier{
 
     if (!isSuccess) {
       ScaffoldMessenger.of(context).showSnackBar(
-         const SnackBar(
-            content: Text('Podany kod jest niepoprawny, spróbuj ponownie')),
+        const SnackBar(
+          content: Text('Podany kod jest niepoprawny, spróbuj ponownie'),
+        ),
       );
       return;
     }
 
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => const PolicyPage()), //TODO: Change MainPage()
+      MaterialPageRoute(builder: (context) => const WelcomePage()),
       (route) => false,
     );
   }
 
   @override
-  void dispose(){
+  void dispose() {
     otpControllers.dispose();
     super.dispose();
   }
 }
-

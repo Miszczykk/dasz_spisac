@@ -3,7 +3,7 @@ import 'package:dasz_spisac/services/database_service.dart';
 import 'package:dasz_spisac/models/local_model.dart';
 import 'dart:async';
 
-class MainViewmodel extends ChangeNotifier{
+class MainViewmodel extends ChangeNotifier {
   final DatabaseService _dbService = DatabaseService();
   final TextEditingController searchController = TextEditingController();
 
@@ -13,19 +13,19 @@ class MainViewmodel extends ChangeNotifier{
   StreamSubscription? _notesSubscription;
   Timer? _debounce;
 
-  MainViewmodel(){
+  MainViewmodel() {
     _startListening();
     searchController.addListener(_onSearchChanged);
   }
 
-  void _onSearchChanged(){
+  void _onSearchChanged() {
     if (_debounce?.isActive ?? false) _debounce!.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
       _startListening();
     });
   }
 
-  void _startListening(){
+  void _startListening() {
     _notesSubscription?.cancel();
 
     final query = searchController.text;
@@ -39,14 +39,18 @@ class MainViewmodel extends ChangeNotifier{
       return;
     }
 
-    _notesSubscription = _dbService.getData(query, domain).listen((data) {
-      _notes = data;
-      notifyListeners();
-    }, onError: (error) {
-      print("Błąd streama: $error");
-    });
+    _notesSubscription = _dbService
+        .getData(query, domain)
+        .listen(
+          (data) {
+            _notes = data;
+            notifyListeners();
+          },
+          onError: (error) {
+            print("Błąd streama: $error");
+          },
+        );
   }
-
 
   @override
   void dispose() {
