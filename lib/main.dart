@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
         builder: (context, child){
           return Theme(data: AppTheme.lightTheme(context), child: child!);
         },
-        home: LocalModel.hasUser() ? const PolicyPage() : const WelcomePage()
+        // home: LocalModel.hasUser() ? const PolicyPage() : const WelcomePage()
+        home: LocalModel.hasUser() ? const WelcomePage() : const PolicyPage()
     );
   }
 }

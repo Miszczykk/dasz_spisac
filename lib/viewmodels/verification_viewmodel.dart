@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dasz_spisac/views/policy_page.dart';
+// import 'package:dasz_spisac/views/policy_page.dart';
+import 'package:dasz_spisac/views/welcome_page.dart';
 import 'package:dasz_spisac/services/OTP_service.dart';
 import 'package:dasz_spisac/models/local_model.dart';
 
@@ -36,7 +37,7 @@ class VerificationViewmodel extends ChangeNotifier{
     }
 
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => const PolicyPage()), //TODO: Change MainPage()
+      MaterialPageRoute(builder: (context) => const WelcomePage()),
       (route) => false,
     );
   }

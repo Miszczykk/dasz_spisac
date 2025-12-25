@@ -32,7 +32,7 @@ class _PolicyPageContent extends StatelessWidget{
 2.2. W celu weryfikacji autentyczności konta, system automatycznie generuje i wysyła na podany adres e-mail jednorazowy kod weryfikacyjny.
 2.3. Użytkownik zobowiązany jest do przepisania otrzymanego kodu w odpowiednim polu Aplikacji. Jest to warunek konieczny do uzyskania dostępu do funkcjonalności systemu.
 3. Standardy Plików:
-3.1. W celu zapewnienia bezpieczeństwa i spójności danych, Aplikacja umożliwia przesyłanie wyłącznie plików o następujących rozszerzeniach: txt, docx, odt, xlsx, ods, pptx, odp, png, jpg, jpeg.
+3.1. W celu zapewnienia bezpieczeństwa i spójności danych, Aplikacja umożliwia przesyłanie wyłącznie plików o następujących rozszerzeniach: txt, docx, odt, xlsx, ods, pptx.
 3.2. Próba przesłania plików o innych rozszerzeniach zostanie automatycznie zablokowana przez system.
 4. Transparentność Metadanych: Przy każdym udostępnionym pliku Aplikacja automatycznie publikuje informacje techniczne, w tym:
 4.1. Rozmiar pliku.
