@@ -4,7 +4,7 @@ import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
 import 'package:dasz_spisac/viewmodels/login_viewmodel.dart';
 import 'package:dasz_spisac/theme/widgets/app_header.dart';
 
-class LoginPage extends StatelessWidget{
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget{
   }
 }
 
-class _LoginPageContent extends StatelessWidget{
+class _LoginPageContent extends StatelessWidget {
   const _LoginPageContent();
 
   @override
@@ -28,27 +28,30 @@ class _LoginPageContent extends StatelessWidget{
           children: [
             AppHeader(),
             Expanded(
-                child: Column(
-                  children: [
-                    const Spacer(),
-                    TextField(
-                        controller: viewModel.loginController,
-                        style: Theme.of(context).textTheme.labelMedium,
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Podaj login'
-                        )
+              child: Column(
+                children: [
+                  const Spacer(),
+                  TextField(
+                    controller: viewModel.loginController,
+                    style: Theme.of(context).textTheme.labelMedium,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Podaj login',
                     ),
-                    const Spacer(),
-                    Consumer<LoginViewmodel>(
-                      builder: (context, vm, child){
-                        return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Dalej'));
-                        },
-                    ),
-                    SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
-                  ],
-                )
-            )
+                  ),
+                  const Spacer(),
+                  Consumer<LoginViewmodel>(
+                    builder: (context, vm, child) {
+                      return ElevatedButton(
+                        onPressed: () => vm.onNextPressed(context),
+                        child: Text('Dalej'),
+                      );
+                    },
+                  ),
+                  SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 class AppFonts {
   AppFonts._();
 
-  static double _responsiveFont(BuildContext context, double fontSize){
-    return MediaQuery.of(context).size.width * (fontSize/344);
+  static double _responsiveFont(BuildContext context, double fontSize) {
+    return MediaQuery.of(context).size.width * (fontSize / 344);
   }
 
   static double h1(BuildContext context) => _responsiveFont(context, 70);

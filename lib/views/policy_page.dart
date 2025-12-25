@@ -4,7 +4,7 @@ import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
 import 'package:dasz_spisac/viewmodels/policy_viewmodel.dart';
 import 'package:dasz_spisac/theme/widgets/app_header.dart';
 
-class PolicyPage extends StatelessWidget{
+class PolicyPage extends StatelessWidget {
   const PolicyPage({super.key});
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class PolicyPage extends StatelessWidget{
   }
 }
 
-class _PolicyPageContent extends StatelessWidget{
+class _PolicyPageContent extends StatelessWidget {
   const _PolicyPageContent();
 
   static const String policyText = """
@@ -85,34 +85,46 @@ class _PolicyPageContent extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return GradientScaffold(
-        body: SafeArea(
-            child: Column(
-              children: [
-                AppHeader(),
+      body: SafeArea(
+        child: Column(
+          children: [
+            AppHeader(),
 
-                Expanded(
-                  child: ListView(
-                    children: [
-                      Text.rich(
-                          TextSpan(
-                              children: [
-                                TextSpan(text: '\nREGULAMIN ŚWIADCZENIA USŁUG W RAMACH APLIKACJI MOBILNEJ "DASZ NOTATKI"\n\n', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
-                                TextSpan(text: policyText, style: Theme.of(context).textTheme.labelSmall)
-                              ]
-                          )
-                      ),
-                      SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
-                      Consumer<PolicyViewmodel>(
-                          builder: (context, vm, child){
-                            return ElevatedButton(onPressed: () => vm.onNextPressed(context), child: Text('Akceptuję'));
-                          }),
-                      SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
-                    ],
+            Expanded(
+              child: ListView(
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text:
+                              '\nREGULAMIN ŚWIADCZENIA USŁUG W RAMACH APLIKACJI MOBILNEJ "DASZ NOTATKI"\n\n',
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                          text: policyText,
+                          style: Theme.of(context).textTheme.labelSmall,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            )
-        )
+                  SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
+                  Consumer<PolicyViewmodel>(
+                    builder: (context, vm, child) {
+                      return ElevatedButton(
+                        onPressed: () => vm.onNextPressed(context),
+                        child: Text('Akceptuję'),
+                      );
+                    },
+                  ),
+                  SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

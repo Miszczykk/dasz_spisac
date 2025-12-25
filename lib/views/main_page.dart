@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
 import 'package:dasz_spisac/viewmodels/main_viewmodel.dart';
+import 'package:dasz_spisac/theme/widgets/note_card.dart';
 
 class MainPage extends StatelessWidget{
   const MainPage({super.key});
@@ -60,19 +61,13 @@ class _MainPageContent extends StatelessWidget{
                         itemCount: vm.notes.length,
                         itemBuilder: (context, index){
                           final note = vm.notes[index];
-
-                          return Card(
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            child: ListTile(
-                              leading: const Icon(Icons.description),
-                              title: Text(
-                                note['title'],
-                                style: const TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              subtitle: Text('Typ: ${note['extension_file']} | Data: ${note['date']}'),
-                              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                            ),
+                          return NoteCard(
+                            note: note,
+                            onDownloadTap: (){
+                              SnackBar(
+                                  content: Text('Kliknięto ${note['title']}')
+                              );
+                            },
                           );
                         },
                       );
