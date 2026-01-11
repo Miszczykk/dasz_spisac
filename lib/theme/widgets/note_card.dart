@@ -14,91 +14,97 @@ class NoteCard extends StatelessWidget {
       color: AppColors.bgFrame,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              AspectRatio(
-                aspectRatio: 1.0,
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: AppColors.bgExtension,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: Text(
-                    note['extension_file'],
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textExtension,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 15),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      note['title'],
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        fontWeight: FontWeight.bold,
+        child: Column(
+          children: [
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AspectRatio(
+                    aspectRatio: 1.0,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColors.bgExtension,
+                        borderRadius: BorderRadius.circular(25),
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                      child: Text(
+                        note['extension_file'],
+                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textExtension,
+                        ),
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Icon(CupertinoIcons.person_alt, size: 20),
-                            Text(
-                              note['id_user'].toString(),
-                              style: Theme.of(context).textTheme.bodySmall
-                                  ?.copyWith(color: AppColors.textExtension),
-                            ),
-                          ],
+                        Text(
+                          note['title'],
+                          style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        Row(
-                          children: [
-                            Icon(CupertinoIcons.tray_arrow_down_fill, size: 20),
-                            Text(
-                              _formatFileSize(note['size_file'].toString()),
-                              style: Theme.of(context).textTheme.bodySmall
-                                  ?.copyWith(color: AppColors.textExtension),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(CupertinoIcons.calendar, size: 20),
-                            Text(
-                              _formatDate(note['date'].toString()),
-                              style: Theme.of(context).textTheme.bodySmall
-                                  ?.copyWith(color: AppColors.textExtension),
-                            ),
-                          ],
+                        SizedBox(height: 10),
+                        
+                        ElevatedButton(
+                          onPressed: onDownloadTap,
+                          child: Text(
+                            'POBIERZ',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(190, 50),
+                          ),
                         ),
                       ],
                     ),
-                    ElevatedButton(
-                      onPressed: onDownloadTap,
-                      child: Text(
-                        'POBIERZ',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(190, 50),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          SizedBox(height: 15),
+          Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(CupertinoIcons.person_alt, size: 20),
+                                Text(
+                                  note['id_user'].toString(),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(color: AppColors.textExtension),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(CupertinoIcons.tray_arrow_down_fill, size: 20),
+                                Text(
+                                  _formatFileSize(note['size_file'].toString()),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(color: AppColors.textExtension),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(CupertinoIcons.calendar, size: 20),
+                                Text(
+                                  _formatDate(note['date'].toString()),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(color: AppColors.textExtension),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),],
         ),
       ),
     );

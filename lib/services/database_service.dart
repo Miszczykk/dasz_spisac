@@ -27,4 +27,8 @@ class DatabaseService {
       }).toList();
     });
   }
+
+  Future<void> addNote(String domain, Map<String, dynamic> noteData) async {
+    await Supabase.instance.client.from(domain).insert(noteData);
+  }
 }
