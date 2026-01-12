@@ -60,7 +60,7 @@ class NoteCard extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(190, 50),
+                            minimumSize: const Size(240, 50),
                           ),
                         ),
                       ],
@@ -74,6 +74,7 @@ class NoteCard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(CupertinoIcons.person_alt, size: 20),
                                 Text(

@@ -86,7 +86,7 @@ class _AddNotePageContent extends StatelessWidget {
                     ? const CircularProgressIndicator()
                     : Text(
                         'DODAJ',
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
               ),
             ],
