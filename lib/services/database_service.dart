@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:io';
 
 class DatabaseService {
   Stream<List<Map<String, dynamic>>> getData(
@@ -26,6 +27,15 @@ class DatabaseService {
             idUser.contains(searchLower);
       }).toList();
     });
+  }
+
+  Future<String?> uploadFile(String bucketId, String path, File file) async{
+    try{
+      await Supabase.instance.client.storage.from(bucketId).upload(path, file);
+      return path;
+    }catch(e){
+      return null;
+    }
   }
 
   Future<void> addNote(String domain, Map<String, dynamic> noteData) async {

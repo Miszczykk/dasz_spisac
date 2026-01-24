@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dasz_spisac/models/local_model.dart';
 import 'package:dasz_spisac/services/database_service.dart';
 import 'package:file_picker/file_picker.dart';
+import 'dart:io';
 
 class AddNoteViewModel extends ChangeNotifier {
   final DatabaseService _dbService = DatabaseService();
@@ -59,6 +60,20 @@ class AddNoteViewModel extends ChangeNotifier {
       if (domain == null || userId == null) {
         throw Exception("Brak danych użytkownika");
       }
+      final fileToUpload = File(_selectedFile!.path!);
+      final timestamp = DateTime.now().millisecondsSinceEpoch;
+      final ext = _selectedFile!.extension ?? 'file';
+      final fileName = '${userId}_$timestamp.$ext';
+
+      final uploadResult = await _dbService.uploadFile(
+        'files',
+        fileName,
+        fileToUpload,
+      );
+
+      if (uploadResult == null) {
+        throw Exception("Nie udało się wysłać pliku");
+      }
 
       final newNote = {
         'title': titleController.text,
@@ -66,12 +81,14 @@ class AddNoteViewModel extends ChangeNotifier {
         'id_user': userId,
         'date': DateTime.now().toIso8601String(),
         'size_file': _selectedFile!.size,
+        'file_name': fileName,
       };
 
       await _dbService.addNote(domain, newNote);
       _setLoading(false);
       return true;
     } catch (e) {
+      print("Błąd dodawania notatki: $e"); // lub print(e);
       _setLoading(false);
       return false;
     }
