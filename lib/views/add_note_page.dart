@@ -52,14 +52,30 @@ class _AddNotePageContent extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              TextField(
-                controller: viewModel.extensionController,
-                decoration: const InputDecoration(
-                  labelText: 'Rozszerzenie (np. PDF, DOCX)',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.insert_drive_file),
+
+
+              InkWell(
+                onTap: viewModel.isLoading ? null : () => viewModel.pickFile(),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.attach_file),
+                      const SizedBox(width: 10),
+                      Expanded(child: Text(
+                        viewModel.selectedFile == null ? 'Wybierz plik' : 'Wybrano: ${viewModel.selectedFile!.name}',
+                        overflow: TextOverflow.ellipsis,
+                      ))
+                    ],
+                  ),
                 ),
               ),
+
+
               const Spacer(),
               ElevatedButton(
                 onPressed: viewModel.isLoading
