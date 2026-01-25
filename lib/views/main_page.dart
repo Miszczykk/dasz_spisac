@@ -1,3 +1,4 @@
+import 'package:dasz_spisac/services/database_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,7 @@ import 'package:dasz_spisac/theme/widgets/gradient_scaffold.dart';
 import 'package:dasz_spisac/viewmodels/main_viewmodel.dart';
 import 'package:dasz_spisac/theme/widgets/note_card.dart';
 import 'package:dasz_spisac/views/add_note_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -64,7 +66,23 @@ class _MainPageContent extends StatelessWidget {
                 final note = vm.notes[index];
                 return NoteCard(
                   note: note,
-                  onDownloadTap: () {
+                  onDownloadTap: () async {
+                    final fileName = note['file_name'];
+                    
+                    if(fileName != null && fileName.toString().isNotEmpty){
+                      final dbService = DatabaseService();
+                      final url = dbService.getFileUrl('files', fileName);
+                      
+                      final uri = Uri.parse(url);
+                      if(await canLaunchUrl(uri)){
+                        await launchUrl(uri, mode: LaunchMode.externalApplication);
+                      }else{
+                        print("Nie udało się otworzyć linku: $url");
+                      }
+                    }else{
+                      print("Brak nazwy pliku w bazie dla tej notatki");
+                    }
+                    
                     SnackBar(content: Text('Kliknięto ${note['title']}'));
                   },
                 );

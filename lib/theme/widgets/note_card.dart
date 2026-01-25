@@ -1,6 +1,7 @@
 import 'package:dasz_spisac/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NoteCard extends StatelessWidget {
   final Map<String, dynamic> note;

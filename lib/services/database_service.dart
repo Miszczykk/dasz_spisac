@@ -38,6 +38,11 @@ class DatabaseService {
     }
   }
 
+  String getFileUrl(String bucketId, String path){
+    return Supabase.instance.client.storage.from(bucketId).getPublicUrl(path);
+  }
+
+
   Future<void> addNote(String domain, Map<String, dynamic> noteData) async {
     await Supabase.instance.client.from(domain).insert(noteData);
   }
