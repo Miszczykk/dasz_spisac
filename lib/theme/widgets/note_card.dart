@@ -32,10 +32,11 @@ class NoteCard extends StatelessWidget {
                       ),
                       child: Text(
                         note['extension_file'],
-                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textExtension,
-                        ),
+                        style: Theme.of(context).textTheme.displaySmall
+                            ?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textExtension,
+                            ),
                       ),
                     ),
                   ),
@@ -46,14 +47,13 @@ class NoteCard extends StatelessWidget {
                       children: [
                         Text(
                           note['title'],
-                          style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.displaySmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(height: 10),
-                        
+
                         ElevatedButton(
                           onPressed: onDownloadTap,
                           child: Text(
@@ -70,50 +70,54 @@ class NoteCard extends StatelessWidget {
                 ],
               ),
             ),
-          SizedBox(height: 15),
-          Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(CupertinoIcons.person_alt, size: 20),
-                                Text(
-                                  note['id_user'].toString(),
-                                  style: Theme.of(context).textTheme.bodySmall
-                                      ?.copyWith(color: AppColors.textExtension),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Icon(CupertinoIcons.tray_arrow_down_fill, size: 20),
-                                Text(
-                                  _formatFileSize(note['size_file'].toString()),
-                                  style: Theme.of(context).textTheme.bodySmall
-                                      ?.copyWith(color: AppColors.textExtension),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Icon(CupertinoIcons.calendar, size: 20),
-                                Text(
-                                  _formatDate(note['date'].toString()),
-                                  style: Theme.of(context).textTheme.bodySmall
-                                      ?.copyWith(color: AppColors.textExtension),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),],
+            SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(CupertinoIcons.person_alt, size: 20),
+                    Text(
+                      note['id_user'].toString(),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: AppColors.textExtension,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(CupertinoIcons.tray_arrow_down_fill, size: 20),
+                    Text(
+                      _formatFileSize(note['size_file'].toString()),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: AppColors.textExtension,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(CupertinoIcons.calendar, size: 20),
+                    Text(
+                      _formatDate(note['date'].toString()),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: AppColors.textExtension,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
   }
 
   String _formatFileSize(dynamic rawSize) {
-    double sizeInBytes = (double.tryParse(rawSize.toString()) ?? 0) / 8;
+    double sizeInBytes = (double.tryParse(rawSize.toString()) ?? 0);
 
     if (sizeInBytes < 1024) {
       return '${sizeInBytes.toStringAsFixed(0)} B';

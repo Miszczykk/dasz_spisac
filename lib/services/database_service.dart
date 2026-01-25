@@ -29,19 +29,18 @@ class DatabaseService {
     });
   }
 
-  Future<String?> uploadFile(String bucketId, String path, File file) async{
-    try{
+  Future<String?> uploadFile(String bucketId, String path, File file) async {
+    try {
       await Supabase.instance.client.storage.from(bucketId).upload(path, file);
       return path;
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }
 
-  String getFileUrl(String bucketId, String path){
+  String getFileUrl(String bucketId, String path) {
     return Supabase.instance.client.storage.from(bucketId).getPublicUrl(path);
   }
-
 
   Future<void> addNote(String domain, Map<String, dynamic> noteData) async {
     await Supabase.instance.client.from(domain).insert(noteData);
